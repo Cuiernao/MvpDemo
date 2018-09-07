@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/dp_10"
+    android:layout_margin="1dp"
+    android:background="@color/lightgreen"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/Article_Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="标题" />
+
+    <TextView
+        android:id="@+id/Article_Class"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="类型" />
+    <TextView
+        android:id="@+id/Article_Url"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="www.baidu.com"/>
+</LinearLayout>
