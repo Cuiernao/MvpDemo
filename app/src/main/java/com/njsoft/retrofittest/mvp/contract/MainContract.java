@@ -51,6 +51,11 @@ public interface MainContract {
          */
         void loadMoreArticle(List<ArticleBean.DataBean.DatasBean> datasBeanList);
 
+        /**
+         * 下拉加载更多文章失败
+         */
+        void loadMoreArticleFail();
+
         void showError(String error);
     }
 

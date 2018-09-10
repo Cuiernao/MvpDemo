@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
     android:gravity="center"
     android:orientation="vertical"
     tools:context=".login.WanAndroidLoginActivity">
@@ -13,18 +14,23 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/dp_40"
         android:layout_marginRight="@dimen/dp_40"
-        android:gravity="center">
+        android:background="@color/colorPrimaryDark"
+        android:gravity="center"
+        android:padding="@dimen/dp_10">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/UserName" />
+            android:text="@string/UserName"
+            android:textColor="@color/white" />
 
         <EditText
             android:id="@+id/UserName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:maxLines="1"
+            android:textColor="@color/white" />
     </LinearLayout>
 
     <LinearLayout
@@ -32,25 +38,33 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/dp_40"
         android:layout_marginRight="@dimen/dp_40"
-        android:gravity="center">
+        android:background="@color/colorPrimaryDark"
+        android:gravity="center"
+
+        android:padding="@dimen/dp_10">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/Password" />
+            android:text="@string/Password"
+
+            android:textColor="@color/white" />
 
         <EditText
             android:id="@+id/Password"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:maxLines="1"
+            android:textColor="@color/white" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/dp_40"
-        android:layout_marginRight="@dimen/dp_40">
+        android:layout_marginRight="@dimen/dp_40"
+        android:background="@color/colorPrimaryDark">
 
         <Button
             android:id="@+id/Login"
@@ -58,7 +72,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/dp_10"
             android:layout_weight="1"
-            android:text="@string/Login" />
+            android:text="@string/Login"
+            android:textColor="@color/white" />
 
         <Button
             android:id="@+id/Cancel"
@@ -66,7 +81,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/dp_10"
             android:layout_weight="1"
-            android:text="@string/Cancel" />
+            android:text="@string/Cancel"
+            android:textColor="@color/white" />
 
     </LinearLayout>
 </LinearLayout>

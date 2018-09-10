@@ -49,8 +49,10 @@ public class WanAndroidLoginActivity extends BaseTopActivity implements LoginCon
 
     @Override
     protected void init(Bundle savedInstanceState) {
-        setTitle("WanAndroid登录", 0);
-        setmToolBarRighText(getString(R.string.Register), R.color.red);
+        setTitle("WanAndroid登录", R.color.white);
+        setmToolBarRighText(getString(R.string.Register), R.color.white);
+        setToolBarColor(R.color.colorPrimary);
+        line.setVisibility(View.GONE);
     }
 
     @Override
@@ -82,19 +84,19 @@ public class WanAndroidLoginActivity extends BaseTopActivity implements LoginCon
     public void showPro(String result) {
         DialogProgressUtill.INSTANCE.dissDialog();
         Toast.makeText(this, result, Toast.LENGTH_SHORT).show();
-        if(result.contains("成功")){
+        if (result.contains("成功")) {
             ActivityUtils.goToActivity(this, MainActivity.class);
         }
     }
 
     @Override
     public String getUserName() {
-        return mUserName.getText().toString();
+        return mUserName.getText().toString().trim();
     }
 
     @Override
     public String getPawword() {
-        return mPassword.getText().toString();
+        return mPassword.getText().toString().trim();
     }
 
     @Override

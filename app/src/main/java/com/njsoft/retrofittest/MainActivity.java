@@ -6,9 +6,12 @@ import android.support.v7.widget.RecyclerView;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+//import com.blankj.utilcode.util.ToastUtils;
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.njsoft.retrofittest.adpter.MainAdapter;
 import com.njsoft.retrofittest.basetop.BaseTopActivity;
 import com.njsoft.retrofittest.bean.ArticleBean;
+import com.njsoft.retrofittest.main.CustomLoadMoreView;
 import com.njsoft.retrofittest.mvp.contract.MainContract;
 import com.njsoft.retrofittest.mvp.presenter.MainPresenter;
 import com.njsoft.retrofittest.utils.DialogProgressUtill;
@@ -31,6 +34,7 @@ public class MainActivity extends BaseTopActivity implements MainContract.View {
     @BindView(R.id.ArticleList)
     RecyclerView mArticleList;
     private MainPresenter mainPresenter;
+    MainAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,15 +76,37 @@ public class MainActivity extends BaseTopActivity implements MainContract.View {
 
     @Override
     public void initRecyclerView(List<ArticleBean.DataBean.DatasBean> datasBeanList) {
-        MainAdapter adapter = new MainAdapter(R.layout.mian_item, datasBeanList);
+        adapter = new MainAdapter(R.layout.mian_item, datasBeanList);
         mArticleList.setLayoutManager(new LinearLayoutManager(this));
         mArticleList.setAdapter(adapter);
+        //滑动到倒数int位置时调用LoadMore
+        adapter.setPreLoadNumber(4);
+        adapter.setEnableLoadMore(true);
+        adapter.setLoadMoreView(new CustomLoadMoreView());
+        adapter.setOnLoadMoreListener(() -> {
+            //Presenter加载更多数据操作
+            mainPresenter.getMoreArticle();
+
+        });
 
     }
 
     @Override
     public void loadMoreArticle(List<ArticleBean.DataBean.DatasBean> datasBeanList) {
+        if (adapter.getData().size() >= 50) {
+            //数据全部加载完毕
+            adapter.loadMoreEnd();
+        } else {
 
+            adapter.addData(datasBeanList);
+            adapter.loadMoreComplete();
+
+        }
+    }
+
+    @Override
+    public void loadMoreArticleFail() {
+        adapter.loadMoreFail();
     }
 
     @Override

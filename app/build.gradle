@@ -9,6 +9,11 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        ndk {
+            //选择要添加的对应cpu类型的.so库。
+            abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a', "x86"
+            // 还可以添加 'x86', 'x86_64', 'mips', 'mips64'
+        }
     }
     buildTypes {
         release {
@@ -43,9 +48,12 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.2.0'
 
     //万能适配器
-    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.35'
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.42'
     implementation 'com.yanzhenjie:recyclerview-swipe:1.1.4'
 
     //轮播图
     implementation 'cn.bingoogolapple:bga-banner:2.2.4@aar'
+
+    implementation 'com.blankj:utilcode:1.20.1'
+
 }

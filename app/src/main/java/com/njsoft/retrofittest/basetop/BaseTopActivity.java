@@ -15,6 +15,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.blankj.utilcode.util.ScreenUtils;
 import com.jaeger.library.StatusBarUtil;
 import com.njsoft.retrofittest.R;
 
@@ -39,6 +40,7 @@ public abstract class BaseTopActivity extends AppCompatActivity {//标题
     //内容
     FrameLayout mContentFragment;
     public View line;
+
     /**
      * 初始化视图
      */
@@ -49,7 +51,7 @@ public abstract class BaseTopActivity extends AppCompatActivity {//标题
         mToolBarRighText = findViewById(R.id.mToolBar_right_Text);
         mToolBar = findViewById(R.id.mToolBar);
         mContentFragment = findViewById(R.id.ContentFragment);
-        line=findViewById(R.id.line);
+        line = findViewById(R.id.line);
 
     }
 
@@ -62,7 +64,7 @@ public abstract class BaseTopActivity extends AppCompatActivity {//标题
         //初始化设置 Toolbar
         setSupportActionBar(mToolBar);
         init(savedInstanceState);
-
+        ScreenUtils.isAdaptScreen();
     }
 
     public void setToolBarColor(int color) {

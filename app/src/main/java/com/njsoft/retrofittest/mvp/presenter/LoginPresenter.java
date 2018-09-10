@@ -2,6 +2,8 @@ package com.njsoft.retrofittest.mvp.presenter;
 
 import android.text.TextUtils;
 
+//import com.blankj.utilcode.util.NetworkUtils;
+import com.blankj.utilcode.util.NetworkUtils;
 import com.njsoft.retrofittest.api.wanAndroidbean;
 import com.njsoft.retrofittest.login.WanAndroidLoginActivity;
 import com.njsoft.retrofittest.mvp.ModelListener;
@@ -19,12 +21,16 @@ public class LoginPresenter implements LoginContract.LoginPresenter, ModelListen
 
     @Override
     public void loadDate() {
-        if (loginView!=null) {
-            if (!TextUtils.isEmpty(loginView.getUserName())&&!TextUtils.isEmpty(loginView.getPawword())) {
+        if (loginView != null) {
+            if (!NetworkUtils.isConnected()) {
+                loginView.showPro("未检测到网络！");
+                return;
+            }
+            if (!TextUtils.isEmpty(loginView.getUserName()) && !TextUtils.isEmpty(loginView.getPawword())) {
                 model.setListener(this);
                 model.login(loginView.getUserName(), loginView.getPawword());
 
-            }else {
+            } else {
                 loginView.showPro("用户名，密码不能为空");
             }
         }
@@ -37,14 +43,14 @@ public class LoginPresenter implements LoginContract.LoginPresenter, ModelListen
 
     @Override
     public void onDestroy() {
-      loginView=null;
+        loginView = null;
     }
 
     @Override
     public void modelSuccessful(wanAndroidbean androidbean) {
-        if (androidbean.getErrorCode()!=0) {
+        if (androidbean.getErrorCode() != 0) {
             loginView.showPro(androidbean.getErrorMsg());
-        }else {
+        } else {
             loginView.showPro("登录成功！");
         }
     }

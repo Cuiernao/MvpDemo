@@ -83,12 +83,12 @@ public class WanAndroidRegisterActivity extends BaseTopActivity implements Regis
 
     @Override
     public String getUserName() {
-        return mUserName.getText().toString();
+        return mUserName.getText().toString().trim();
     }
 
     @Override
     public String getPassword() {
-        return mPassword.getText().toString();
+        return mPassword.getText().toString().trim();
     }
 
     @Override
